@@ -35,7 +35,7 @@ export function NavMain({
   return (
     <SidebarGroup>
       <SidebarGroupLabel className="text-3xl text-white pt-4 pb-8">
-        GreenFarm
+        SmartFarm
       </SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
