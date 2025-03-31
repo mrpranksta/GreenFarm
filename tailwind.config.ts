@@ -10,7 +10,10 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			background: 'hsl(var(--background))',
+  			background: {
+							farm: "url('@/components/image/image.png')",
+							default:  'hsl(var(--background))',
+			},
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
@@ -26,7 +29,9 @@ export default {
   			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				foreground: 'hsl(var(--secondary-foreground))',
+				'80': '#B5CCBD',
+				'20': '#21352A',
   			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',

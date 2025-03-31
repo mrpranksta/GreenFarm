@@ -15,13 +15,12 @@ import {
   PieChart,
   Settings,
   Settings2,
+  Sprout,
   SquareTerminal,
   User2,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -31,11 +30,7 @@ import {
 } from "@/components/ui/sidebar"
 
 const data = {
-  // user: {
-  //   name: "user",
-  //   email: "m@example.com",
-  //   avatar: ""
-  // },
+  //Nội dung các nút navbar
   navMain: [
     {
       title: "Home",
@@ -91,17 +86,22 @@ const data = {
       icon: User2,
     },
   ],
-
+  design: {
+    menuButton: 'text-black ',
+  }
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
-      {/* <SidebarHeader>
-        GreenFarm
-      </SidebarHeader> */}
-      <SidebarContent className="bg-[#426653]">
-        <NavMain items={data.navMain} />
+      <SidebarHeader className="flex flex-row items-center bg-secondary-80 overflow-hidden">
+        <Sprout className="h-[32px] w-[32px]"></Sprout>
+        <div className="font-semibold text-[32px]">
+          SmartFarm
+        </div>
+      </SidebarHeader>
+      <SidebarContent className="bg-secondary-80">
+        <NavMain items={data.navMain} className={data.design} />
       </SidebarContent>
       <SidebarRail />
     </Sidebar>

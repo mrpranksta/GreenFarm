@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { ChevronRight, Sprout, type LucideIcon } from "lucide-react"
 
 import {
   Collapsible,
@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/sidebar"
 
 export function NavMain({
-  items,
+  items, className
 }: {
   items: {
     title: string
@@ -30,13 +30,13 @@ export function NavMain({
       title: string
       url: string
     }[]
-  }[]
+  }[],
+  className?: {
+    menuButton: string,
+  }
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className="text-3xl text-white pt-4 pb-8">
-        SmartFarm
-      </SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
@@ -49,8 +49,8 @@ export function NavMain({
                         <SidebarMenuItem>
                         <CollapsibleTrigger asChild>
                           <SidebarMenuButton tooltip={item.title}>
-                            {item.icon && <item.icon className="text-white"/>}
-                            <span className="text-white">{item.title}</span>
+                            {item.icon && <item.icon className={className?.menuButton}/>}
+                            <span className={className?.menuButton}>{item.title}</span>
                             {/* <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" /> */}
                           </SidebarMenuButton>
                         </CollapsibleTrigger>
@@ -60,7 +60,7 @@ export function NavMain({
                               <SidebarMenuSubItem key={subItem.title}>
                                 <SidebarMenuSubButton asChild>
                                   <a href={subItem.url}>
-                                    <span className="text-white">{subItem.title}</span>
+                                    <span className={className?.menuButton}>{subItem.title}</span>
                                   </a>
                                 </SidebarMenuSubButton>
                               </SidebarMenuSubItem>
@@ -71,8 +71,8 @@ export function NavMain({
               :
               <SidebarMenuItem>
                 <SidebarMenuButton tooltip={item.title}>
-                  {item.icon && <item.icon className="text-white"/>}
-                  <span className="text-white">{item.title}</span>
+                  {item.icon && <item.icon className={className?.menuButton}/>}
+                  <span className={className?.menuButton}>{item.title}</span>
                 </SidebarMenuButton>
             </SidebarMenuItem>
             }
