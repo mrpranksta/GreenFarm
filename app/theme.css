@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  --green-farm: "url('@/components/image/image.png')";
+  --secondary-80: '#B5CCBD';
+  --secondary-20: '#21352A';
+}
