@@ -1,8 +1,14 @@
 'use client'
-import axios from "axios";
 import { Sprout } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const router = useRouter();
+  const handleLogin = async () => {
+    //1. Chuyển url đến địa chỉ redirect từ api
+    router.push('http://localhost:8000/api/v1/auth/google/login')
+  }
+
   return (
     <div className="flex bg-[url('@/components/image/image.png')] bg-cover bg-center bg-no-repeat h-screen w-full relative">
       <div className="flex flex-grow items-center flex-col p-16 gap-6 bg-white bg-opacity-70 backdrop-blur-md absolute z-10 bottom-0 right-0 h-screen
@@ -23,16 +29,4 @@ export default function Login() {
       </div>
     </div>
   )
-}
-
-const serverUrl = process.env.SERVER_URL;
-const handleLogin = async () => {
-  try {
-    // Gets authentication url from backend server
-    const response = await axios.get(`${serverUrl}/auth/google/login`);
-    console.log(response);
-    return response;
-  } catch (err) {
-    console.error(`Error at handleLogin: ${err}`)
-  }
 }
