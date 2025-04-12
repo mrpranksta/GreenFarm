@@ -28,6 +28,35 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { useRouter } from "next/navigation"
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const router = useRouter();
+
+  const handleLogOut = () => {
+    document.cookie = 'gid=; Max-Age=0; path=/;'; //remove cookie
+    router.push('/login');
+  }
+  
+  return (
+    <Sidebar collapsible="offcanvas" {...props}>
+      <SidebarHeader className="flex flex-row items-center bg-secondary-80">
+        <Sprout className="h-[32px] w-[32px]"></Sprout>
+        <div className="font-semibold text-[32px]">
+          SmartFarm
+        </div>
+      </SidebarHeader>
+      <SidebarContent className="bg-secondary-80">
+        <NavMain items={data.navMain} className={data.design} />
+        <button 
+          onClick={handleLogOut}
+          className="flex flex-row justify-left gap-4 items-center px-6 rounded-xl">Log out</button>
+      </SidebarContent>
+      <SidebarRail className="bg-secondary-80">
+      </SidebarRail>
+    </Sidebar>
+  )
+}
 
 const data = {
   //Nội dung các nút navbar
@@ -89,21 +118,4 @@ const data = {
   design: {
     menuButton: 'text-black ',
   }
-}
-
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader className="flex flex-row items-center bg-secondary-80 overflow-hidden">
-        <Sprout className="h-[32px] w-[32px]"></Sprout>
-        <div className="font-semibold text-[32px]">
-          SmartFarm
-        </div>
-      </SidebarHeader>
-      <SidebarContent className="bg-secondary-80">
-        <NavMain items={data.navMain} className={data.design} />
-      </SidebarContent>
-      <SidebarRail />
-    </Sidebar>
-  )
 }
