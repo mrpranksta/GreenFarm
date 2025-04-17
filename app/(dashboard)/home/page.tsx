@@ -1,8 +1,5 @@
-"use client"
-
 import { HumidityChart } from "@/components/home-chart"
-import { DeviceStats } from "@/components/ui/deviceStats";
-
+import { DeviceStats } from "@/components/ui/deviceStats"
 export default function Home() {
   return (
       //set overflow-hidden on div to hide the devicestats excess rendering

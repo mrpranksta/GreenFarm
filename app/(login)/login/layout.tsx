@@ -11,10 +11,8 @@ export default function LoginLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vn">
       <body>
         {children}
       </body>
-    </html>
   );
 }
